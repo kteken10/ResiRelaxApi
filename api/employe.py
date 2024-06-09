@@ -1,4 +1,4 @@
-from . import Resource,Employe
+from . import Resource,Employe,reqparse
 from app import db
 class EmployeResource(Resource):
     def get(self, employe_id=None):

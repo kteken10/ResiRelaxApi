@@ -1,4 +1,4 @@
-from . import Resource,jsonify,request,Client
+from . import Resource,jsonify,request,Client,reqparse
 from app import db
 class ClientResource(Resource):
     def get(self, client_id=None):
