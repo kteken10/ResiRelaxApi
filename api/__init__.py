@@ -4,3 +4,4 @@ from models import Client,Chambre,Reservation,Employe,Service,ServiceChoisi,Imag
 from .client import ClientResource
 from .chambre import ChambreResource
 from .employe import EmployeResource
+from .image import ImageResource

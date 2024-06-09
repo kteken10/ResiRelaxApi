@@ -4,7 +4,7 @@ import os
 from flask_restful import Resource, Api
 from flask_migrate import Migrate
 from flask_cors import CORS
-from api import ClientResource,EmployeResource,ChambreResource
+from api import ClientResource,EmployeResource,ChambreResource,ImageResource
 
 from config import config
 
@@ -22,6 +22,8 @@ CORS(app)
 api.add_resource(ClientResource, '/clients', '/clients/<int:client_id>')
 api.add_resource(ChambreResource,'/chambres','/chambres/<int:chambre_id>')
 api.add_resource(EmployeResource,'/employes','/employes/<int:employe_id>')
+api.add_resource(ImageResource, '/images', '/images/<int:image_id>')
+
 
 @app.route('/')
 def index():

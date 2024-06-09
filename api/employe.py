@@ -1,4 +1,5 @@
 from . import Resource,Employe
+from app import db
 class EmployeResource(Resource):
     def get(self, employe_id=None):
         if employe_id:
