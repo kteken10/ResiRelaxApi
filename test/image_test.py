@@ -5,8 +5,10 @@ from app import app
 
 class TestImageResource(TestCase):
     def create_app(self):
-        app.config['TESTING'] = True
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+        # app.config['TESTING'] = True
+        # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+        # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+        # app.config['DEBUG'] = True
         return app
 
     def setUp(self):
@@ -15,15 +17,17 @@ class TestImageResource(TestCase):
         with self.app.app_context():
             db.create_all()
             # Create a sample Chambre for testing
-            self.chambre = Chambre(type_chambre='Double', prix_par_nuit=150.0, disponibilite='Disponible', caracteristiques='Vue sur la montagne')
+            self.chambre = Chambre(
+                type_chambre='Double',
+                prix_par_nuit=150.0,
+                disponibilite='Disponible',
+                caracteristiques='Vue sur la montagne'
+            )
             db.session.add(self.chambre)
             db.session.commit()
+            db.session.refresh(self.chambre)  # Refresh to ensure the session is aware of the instance
 
-    # def tearDown(self):
-    #     # Clean up the database after each test
-    #     with self.app.app_context():
-    #         db.session.remove()
-    #         db.drop_all()
+   
 
     def test_get_images(self):
         # Test the endpoint to get the list of images
@@ -38,6 +42,8 @@ class TestImageResource(TestCase):
             'url': 'http://example.com/image.jpg'
         }
         response = self.client.post('/images', json=data)
+        print(f"Response status code: {response.status_code}")
+        print(f"Response data: {response.data.decode('utf-8')}")
         self.assertEqual(response.status_code, 201)
         self.assertIn('id', response.json)
         self.assertEqual(response.json['url'], 'http://example.com/image.jpg')
