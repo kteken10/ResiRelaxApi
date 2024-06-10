@@ -1,0 +1,18 @@
+
+
+
+nom prenom telephone date de de reservation (12,15)
+
+
+Employé (poste , numéro de téléphone , email ,   (manageur:Tous les droite , receptioniste:reservation directe)
+
+
+Service (Nom du service , Institut de beauté , Room Service, Blanchisseri)
+
+Formulaire 
+reservation (statut :Confirmé , Annulé , en attente ) -> retour au client pour confirmer sa reservation
+
+chambre (avec Vue sur la Mer chambre avec vu sur piscine)
+
+
+chambre (chambre standard , chambre Vip , 
