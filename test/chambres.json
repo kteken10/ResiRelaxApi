@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Chambre standard",
+        "type_chambre": "Standard",
+        "prix": "10000Fcfa",
+        "active": true,
+        "description": "Découvrez notre élégante chambre double, conçue pour offrir un confort optimal et une atmosphère relaxante à nos clients. Cette chambre spacieuse est dotée de deux lits simples, chacun équipé de draps de haute qualité et d'oreillers moelleux pour garantir une nuit de sommeil réparatrice.",
+        "image_path": "../assets/images/ChambreBlanche.jpg"
+    },
+    {
+        "name": "Chambre Vip",
+        "type_chambre": "Standard",
+        "prix": "30000Fcfa",
+        "active": true,
+        "description": "Découvrez notre élégante chambre double, conçue pour offrir un confort optimal et une atmosphère relaxante à nos clients. Cette chambre spacieuse est dotée de deux lits simples, chacun équipé de draps de haute qualité et d'oreillers moelleux pour garantir une nuit de sommeil réparatrice.",
+        "image_path": "../assets/images/ChambreEclaireVeilleuse.jpg"
+    },
+    {
+        "name": "Chambre Vip",
+        "type_chambre": "Standard",
+        "prix": "30000Fcfa",
+        "active": false,
+        "description": "Découvrez notre élégante chambre double, conçue pour offrir un confort optimal et une atmosphère relaxante à nos clients. Cette chambre spacieuse est dotée de deux lits simples, chacun équipé de draps de haute qualité et d'oreillers moelleux pour garantir une nuit de sommeil réparatrice.",
+        "image_path": "../assets/images/ChambreLumineuseTapisBlanc.jpg"
+    },
+    {
+        "name": "Chambre Luxieuse",
+        "type_chambre": "Standard",
+        "prix": "30000Fcfa",
+        "active": false,
+        "description": "Découvrez notre élégante chambre double, conçue pour offrir un confort optimal et une atmosphère relaxante à nos clients. Cette chambre spacieuse est dotée de deux lits simples, chacun équipé de draps de haute qualité et d'oreillers moelleux pour garantir une nuit de sommeil réparatrice.",
+        "image_path": "../assets/images/DoubleLitChambreModerne.jpg"
+    }
+]

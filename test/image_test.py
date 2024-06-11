@@ -5,10 +5,8 @@ from app import app
 
 class TestImageResource(TestCase):
     def create_app(self):
-        # app.config['TESTING'] = True
-        # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
-        # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-        # app.config['DEBUG'] = True
+       
+      
         return app
 
     def setUp(self):
