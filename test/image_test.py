@@ -5,49 +5,43 @@ from app import app
 
 class TestImageResource(TestCase):
     def create_app(self):
-       
-      
         return app
 
     def setUp(self):
-        # Create a test client and initialize the database
+        # Créer un client de test et initialiser la base de données
         self.client = self.app.test_client()
         with self.app.app_context():
             db.create_all()
-            # Create a sample Chambre for testing
+            # Créer une chambre d'échantillon pour les tests
             self.chambre = Chambre(
                 type_chambre='Double',
                 prix_par_nuit=150.0,
-                disponibilite='Disponible',
-                caracteristiques='Vue sur la montagne'
+                active=True,
+                description='Vue sur la montagne'
             )
             db.session.add(self.chambre)
             db.session.commit()
-            db.session.refresh(self.chambre)  # Refresh to ensure the session is aware of the instance
-
-   
+            db.session.refresh(self.chambre)  # Rafraîchir pour s'assurer que la session est consciente de l'instance
 
     def test_get_images(self):
-        # Test the endpoint to get the list of images
+        # Tester l'endpoint pour obtenir la liste des images
         response = self.client.get('/images')
         self.assertEqual(response.status_code, 200)
         self.assertIsInstance(response.json, list)
 
     def test_post_image(self):
-        # Test the endpoint to create a new image
+        # Tester l'endpoint pour créer une nouvelle image
         data = {
             'chambre_id': self.chambre.id,
             'url': 'http://example.com/image.jpg'
         }
         response = self.client.post('/images', json=data)
-        print(f"Response status code: {response.status_code}")
-        print(f"Response data: {response.data.decode('utf-8')}")
         self.assertEqual(response.status_code, 201)
         self.assertIn('id', response.json)
         self.assertEqual(response.json['url'], 'http://example.com/image.jpg')
 
     def test_get_image(self):
-        # Test the endpoint to get a single image by ID
+        # Tester l'endpoint pour obtenir une seule image par ID
         image = Image(chambre_id=self.chambre.id, url='http://example.com/image.jpg')
         db.session.add(image)
         db.session.commit()
@@ -56,7 +50,7 @@ class TestImageResource(TestCase):
         self.assertEqual(response.json['id'], image.id)
 
     def test_put_image(self):
-        # Test the endpoint to update an image
+        # Tester l'endpoint pour mettre à jour une image
         image = Image(chambre_id=self.chambre.id, url='http://example.com/image.jpg')
         db.session.add(image)
         db.session.commit()
@@ -69,7 +63,7 @@ class TestImageResource(TestCase):
         self.assertEqual(response.json['url'], 'http://example.com/updated_image.jpg')
 
     def test_delete_image(self):
-        # Test the endpoint to delete an image
+        # Tester l'endpoint pour supprimer une image
         image = Image(chambre_id=self.chambre.id, url='http://example.com/image.jpg')
         db.session.add(image)
         db.session.commit()
